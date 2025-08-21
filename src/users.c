@@ -1,4 +1,3 @@
-#include "utils.h"
 #include "users.h"
 
 void initializeUserList(User **userList, int *userCount){
@@ -80,8 +79,16 @@ User* searchUser(User **userList, char* userCode, const int* userCount){
     return NULL;
 }
 
-void borrowBook(User* user, int* userCount, Book* book, int bookCount){
-    if(user == NULL || book == NULL) {
+void editUser(User *user){
+    if(!checkValidPointers(1, user)) {
+        fprintf(stderr, "Error: Null pointer passed to editUser.\n");
+        return;
+    }
+    getString("Please enter the new name of the User: ", user->name, sizeof(user->name));
+}
+
+void borrowBook(User* user, int* userCount, Book* book, int* bookCount){
+    if(!checkValidPointers(3, user, userCount, book)) {
         fprintf(stderr, "Error: Null pointer passed to borrowBook.\n");
         return;
     }
@@ -90,21 +97,17 @@ void borrowBook(User* user, int* userCount, Book* book, int bookCount){
         printf("User with ID %s already has %d books borrowed.\n", user->code, MAX_BORROWED);
         return;
     }
-    
-    // int bookId = getInt("Enter book ID to borrow: ");
-    // if(bookId < 1 || bookId > bookCount) {
-    //     printf("Invalid book ID.\n");
-    //     return;
-    // }
 
-    // if(books[bookId -1].available <= 0) {
-    //     printf("Book with ID %d is not available for borrowing.\n", bookId);
-    //     return;
-    // }
+    if(book->available <= 0) {
+        printf("Book with ID %s (Name: %s) is not available for borrowing.\n", book->code, book->title);
+        return;
+    }
+    book->available--;
+    strcpy(user->borrowedBooks[user->borrowedBooksCount], book->code);
+    user->borrowedBooksCount++;
+    (*bookCount)++;
     
-    // books[bookId - 1].available--;
-    // users[userId - 1].borrowedBookId = bookId;
-    // printf("Book with ID %d borrowed by user with ID %d.\n", bookId, userId);
+    printf("Book with ID %s borrowed by user with ID %s.\n", book->code, user->code);
 
 }
 

@@ -6,9 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "models.h"
-
-#define MAX_BORROWED 10
-#define USER_PREFIX "USR"
+#include "utils.h"
 
 void initializeUsersList(User **usersList, int *usersCount);
 bool checkUserCode(char* userCode);

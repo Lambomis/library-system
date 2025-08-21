@@ -2,6 +2,7 @@
 #define MODELS_H
 
 #define MAX_BORROWED 10
+#define USER_PREFIX "USR"
 
 typedef struct {
     char code[20];
@@ -14,7 +15,7 @@ typedef struct {
     char code[20];
     char name[50];
     char borrowedBooks[MAX_BORROWED][20];
-    int borrowedCount;
+    int borrowedBooksCount;
 } User;
 
 #endif

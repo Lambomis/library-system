@@ -7,8 +7,8 @@ project(LibrarySystem C)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Aggiungi cartella include/ al path degli header
-include_directories(include)
+# Aggiungi cartella modules/ al path degli header
+include_directories(modules)
 
 # Sorgenti
 set(SOURCES
