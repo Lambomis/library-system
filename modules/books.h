@@ -2,13 +2,7 @@
 #define BOOKS_H
 
 #define BOOK_PREFIX "BK"
-
-typedef struct {
-    int id;
-    char title[100];
-    char author[100];
-    int available;
-} Book;
+#include "models.h"
 
 void initializeBooksList(Book **booksList, int *booksCount);
 void loadBooks(Book *booksList, int *numBooks, const char *filename);
