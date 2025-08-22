@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdbool.h>
 #include "utils.h"
 
 int getInt(const char* prompt){
@@ -53,4 +48,19 @@ bool checkValidPointers(int count, ...) {
 
     va_end(args);
     return true;
+}
+
+bool checkCode(char* code, char type){
+    if(type == 'b'){
+        if(strncmp(code, BOOK_PREFIX, strlen(BOOK_PREFIX)) != 0) {
+            return false;
+        }
+        return true;
+    } else if (type == 'u') {
+        if(strncmp(code, USER_PREFIX, strlen(USER_PREFIX)) != 0) {
+            return false;
+        }
+        return true;
+    }
+    return false;
 }

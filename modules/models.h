@@ -3,6 +3,7 @@
 
 #define MAX_BORROWED 10
 #define USER_PREFIX "USR"
+#define BOOK_PREFIX "BK"
 
 typedef struct {
     char code[20];

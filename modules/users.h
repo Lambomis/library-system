@@ -8,18 +8,17 @@
 #include "models.h"
 #include "utils.h"
 
-void initializeUsersList(User **usersList, int *usersCount);
-bool checkUserCode(char* userCode);
+void initializeUserList(User **userList, int *usersCount);
 
-void addUser(User **usersList, int *usersCount);
-void removeUser(User **usersList, int *usersCount, char* userCode);
-User* searchUser(User **usersList, char* userCode);
+void addUser(User **userList, int *usersCount);
+void removeUser(User **userList, int *usersCount, char* userCode);
+User* searchUser(User **userList, char* userCode, const int* usersCount);
 void editUser(User *user);
 
-void borrowBook(User *user, int usersCount, Book *books, int bookUserCount);
-void returnBook(User *user, int usersCount, Book *books, int bookUserCount);
+void borrowBook(User* user, Book* book);
+void returnBook(User *user, Book *book);
 
-void saveUsers(User *usersList, int usersCount, char *filename);
-int loadUsers(User **usersList, char *filename);
+void saveUsersCSV(const char *filename, User *userList, int usersCount);
+void loadUsersCSV(const char *filename, User **userList, int *usersCount);
 
 #endif
